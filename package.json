@@ -2,7 +2,7 @@
   "name": "resilient-cities-demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tanhata.github.io/rescities",
+  "homepage": "https://tanhata.github.io/geo-viz",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
