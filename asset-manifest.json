@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rescities/static/css/main.e6c13ad2.css",
+    "main.js": "/rescities/static/js/main.d9b74a9b.js",
+    "static/js/453.1f51ac7d.chunk.js": "/rescities/static/js/453.1f51ac7d.chunk.js",
+    "index.html": "/rescities/index.html",
+    "main.e6c13ad2.css.map": "/rescities/static/css/main.e6c13ad2.css.map",
+    "main.d9b74a9b.js.map": "/rescities/static/js/main.d9b74a9b.js.map",
+    "453.1f51ac7d.chunk.js.map": "/rescities/static/js/453.1f51ac7d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d9b74a9b.js"
+  ]
+}
