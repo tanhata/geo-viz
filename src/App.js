@@ -134,7 +134,7 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
           {/* Water Bodies */}
           <div className="absolute bottom-0 left-0 w-full h-20 bg-blue-300 opacity-80">
             <div className="absolute bottom-2 left-4 text-xs text-blue-800 font-medium opacity-70">
-              🌊 Water Bodies
+              Water Bodies
             </div>
           </div>
           <div className="absolute top-20 right-10 w-32 h-48 bg-blue-200 opacity-70 rounded-lg">
@@ -146,7 +146,7 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
           {/* Parks & Green Spaces */}
           <div className="absolute top-1/3 left-1/4 w-24 h-20 bg-green-400 opacity-70 rounded-lg">
             <div className="absolute top-2 left-2 text-xs text-green-800 font-medium opacity-70">
-              🌳 Park
+              Park
             </div>
           </div>
           <div className="absolute bottom-1/3 right-1/4 w-20 h-16 bg-green-300 opacity-70 rounded-lg">
@@ -158,7 +158,7 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
           {/* Urban Center */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gray-200 opacity-60 rounded">
             <div className="absolute top-2 left-2 text-xs text-gray-700 font-medium opacity-70">
-              🏙️ Downtown
+              Downtown
             </div>
           </div>
           
@@ -263,7 +263,7 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
         {/* City Label */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
           <div className="bg-white/90 px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md">
-            📍 {currentLocation.name.split(',')[0]}
+            {currentLocation.name.split(',')[0]}
           </div>
         </div>
 
@@ -272,15 +272,15 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
           <div className="absolute inset-0 pointer-events-none">
             {/* Arrows pointing to features */}
             <div className="absolute top-20 left-20 bg-white/95 p-2 rounded-lg shadow-lg text-xs">
-              <div className="font-bold text-blue-600">💧 Water Bodies</div>
+              <div className="font-bold text-blue-600">Water Bodies</div>
               <div>Rivers, lakes, coastlines</div>
             </div>
             <div className="absolute top-40 left-60 bg-white/95 p-2 rounded-lg shadow-lg text-xs">
-              <div className="font-bold text-green-600">🌳 Green Spaces</div>
+              <div className="font-bold text-green-600">Green Spaces</div>
               <div>Parks, forests, open areas</div>
             </div>
             <div className="absolute bottom-40 right-40 bg-white/95 p-2 rounded-lg shadow-lg text-xs">
-              <div className="font-bold text-gray-600">🏙️ Urban Areas</div>
+              <div className="font-bold text-gray-600">Urban Areas</div>
               <div>Dense city centers</div>
             </div>
           </div>
@@ -302,8 +302,8 @@ const GeoVisualization3D = ({ viewport, activeLayer, climateData, currentLocatio
           <MapPin className="w-4 h-4 text-blue-600" />
           {currentLocation.name}
         </div>
-        <div className="text-sm text-blue-600 mt-1">🗺️ Interactive Climate Map</div>
-        <div className="text-xs text-green-600 mt-1">✓ {(climateData[activeLayer] || []).length} active data points</div>
+        <div className="text-sm text-blue-600 mt-1">Interactive Climate Map</div>
+        <div className="text-xs text-green-600 mt-1">{(climateData[activeLayer] || []).length} active data points</div>
         
         {/* What you're seeing explanation */}
         <div className="mt-3 pt-2 border-t border-gray-200">
@@ -997,15 +997,159 @@ const ResilientCitiesApp = () => {
           <section className="mb-20">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Final Solution</h2>
             
-            {/* Screenshot of main interface */}
+            {/* Interface Preview */}
             <div className="mb-12">
-              <img 
-                src="/images/main-interface.png" 
-                alt="Main interface showing map-first layout with geographic features, data layer controls, and search functionality"
-                className="w-full rounded-lg shadow-xl border border-gray-200"
-              />
+              <svg viewBox="0 0 1200 600" className="w-full h-auto rounded-lg shadow-xl border border-gray-200">
+                {/* Background */}
+                <defs>
+                  <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f0fdf4" />
+                    <stop offset="50%" stopColor="#dbeafe" />
+                    <stop offset="100%" stopColor="#f5f5f4" />
+                  </linearGradient>
+                  <linearGradient id="tempGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#ef4444" />
+                  </linearGradient>
+                </defs>
+                
+                <rect width="1200" height="600" fill="url(#mapBg)" />
+                
+                {/* Sidebar */}
+                <rect x="0" y="0" width="320" height="600" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                
+                {/* Sidebar Header */}
+                <text x="24" y="40" fontSize="20" fontWeight="bold" fill="#111827">Resilient Cities</text>
+                <text x="24" y="60" fontSize="12" fill="#6b7280">Climate Impact Visualization Platform</text>
+                
+                {/* Search Box */}
+                <rect x="24" y="80" width="272" height="36" rx="6" fill="white" stroke="#d1d5db" strokeWidth="1" />
+                <text x="40" y="102" fontSize="12" fill="#9ca3af">Search cities...</text>
+                
+                {/* Current Location */}
+                <rect x="24" y="128" width="272" height="48" rx="6" fill="#dbeafe" />
+                <text x="32" y="146" fontSize="12" fontWeight="medium" fill="#1e40af">New York City, NY</text>
+                <text x="32" y="162" fontSize="10" fill="#3b82f6">40.7589°N, 73.9851°W</text>
+                
+                {/* Layer Controls */}
+                <text x="24" y="200" fontSize="14" fontWeight="600" fill="#111827">Climate Data Layers</text>
+                
+                {/* Temperature Layer (Active) */}
+                <rect x="24" y="212" width="272" height="48" rx="8" fill="#dbeafe" stroke="#93c5fd" strokeWidth="2" />
+                <circle cx="40" cy="236" r="6" fill="#ef4444" />
+                <text x="56" y="240" fontSize="13" fontWeight="500" fill="#111827">Temperature</text>
+                <text x="56" y="252" fontSize="10" fill="#6b7280">Heat distribution across urban areas</text>
+                
+                {/* Buildings Layer */}
+                <rect x="24" y="268" width="272" height="48" rx="8" fill="#f9fafb" stroke="transparent" strokeWidth="2" />
+                <rect x="36" y="288" width="8" height="16" fill="#6b7280" />
+                <text x="56" y="296" fontSize="13" fontWeight="500" fill="#111827">Buildings</text>
+                <text x="56" y="308" fontSize="10" fill="#6b7280">Energy efficiency & carbon footprint</text>
+                
+                {/* Flood Layer */}
+                <rect x="24" y="324" width="272" height="48" rx="8" fill="#f9fafb" stroke="transparent" strokeWidth="2" />
+                <circle cx="40" cy="348" r="6" fill="#3b82f6" opacity="0.7" />
+                <text x="56" y="352" fontSize="13" fontWeight="500" fill="#111827">Flood Risk</text>
+                <text x="56" y="364" fontSize="10" fill="#6b7280">Climate change flood vulnerability</text>
+                
+                {/* Analytics */}
+                <text x="24" y="400" fontSize="14" fontWeight="600" fill="#111827">Live Analytics</text>
+                
+                {/* Metric Cards */}
+                <rect x="24" y="412" width="272" height="40" rx="6" fill="#f9fafb" />
+                <text x="32" y="426" fontSize="10" fill="#6b7280">Avg Temperature</text>
+                <text x="32" y="444" fontSize="16" fontWeight="bold" fill="#111827">22.4°C</text>
+                
+                <rect x="24" y="460" width="272" height="40" rx="6" fill="#f9fafb" />
+                <text x="32" y="474" fontSize="10" fill="#6b7280">Buildings Analyzed</text>
+                <text x="32" y="492" fontSize="16" fontWeight="bold" fill="#111827">60</text>
+                
+                {/* Action Buttons */}
+                <rect x="24" y="520" width="272" height="32" rx="6" fill="#2563eb" />
+                <text x="148" y="540" fontSize="12" fontWeight="500" fill="white" textAnchor="middle">Refresh Data</text>
+                
+                <rect x="24" y="560" width="272" height="32" rx="6" fill="#16a34a" />
+                <text x="148" y="580" fontSize="12" fontWeight="500" fill="white" textAnchor="middle">Export Report</text>
+                
+                {/* Main Map Area */}
+                <rect x="320" y="0" width="880" height="600" fill="url(#mapBg)" />
+                
+                {/* Geographic Features */}
+                {/* Water body at bottom */}
+                <rect x="320" y="520" width="880" height="80" fill="#93c5fd" opacity="0.6" />
+                <text x="360" y="574" fontSize="10" fill="#1e40af">Water Bodies</text>
+                
+                {/* Lake/Bay */}
+                <ellipse cx="1050" cy="150" rx="80" ry="60" fill="#7dd3fc" opacity="0.5" />
+                <text x="1010" y="125" fontSize="9" fill="#0369a1">Lake/Bay</text>
+                
+                {/* Parks */}
+                <rect x="500" y="180" width="80" height="60" rx="8" fill="#4ade80" opacity="0.6" />
+                <text x="520" y="205" fontSize="9" fill="#166534">Park</text>
+                
+                <rect x="900" y="350" width="60" height="50" rx="6" fill="#86efac" opacity="0.6" />
+                <text x="910" y="370" fontSize="8" fill="#166534">Green Space</text>
+                
+                {/* Urban Center */}
+                <rect x="680" y="250" width="120" height="120" rx="8" fill="#d1d5db" opacity="0.5" />
+                <text x="720" y="305" fontSize="9" fill="#374151">Downtown</text>
+                
+                {/* Road Network */}
+                <line x1="320" y1="300" x2="1200" y2="300" stroke="#9ca3af" strokeWidth="2" />
+                <line x1="760" y1="0" x2="760" y2="600" stroke="#9ca3af" strokeWidth="2" />
+                <line x1="320" y1="200" x2="1200" y2="200" stroke="#9ca3af" strokeWidth="1" />
+                <line x1="320" y1="400" x2="1200" y2="400" stroke="#9ca3af" strokeWidth="1" />
+                <line x1="560" y1="0" x2="560" y2="600" stroke="#9ca3af" strokeWidth="1" />
+                <line x1="960" y1="0" x2="960" y2="600" stroke="#9ca3af" strokeWidth="1" />
+                
+                {/* Temperature Data Points */}
+                <circle cx="450" cy="150" r="8" fill="#f59e0b" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="650" cy="180" r="12" fill="#ef4444" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="550" cy="280" r="10" fill="#f97316" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="820" cy="220" r="6" fill="#eab308" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="720" cy="380" r="14" fill="#dc2626" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="950" cy="320" r="7" fill="#f59e0b" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="480" cy="420" r="9" fill="#f97316" stroke="white" strokeWidth="2" opacity="0.9" />
+                <circle cx="680" cy="160" r="11" fill="#ef4444" stroke="white" strokeWidth="2" opacity="0.9" />
+                
+                {/* Map Info Panel */}
+                <rect x="340" y="20" width="240" height="100" rx="8" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                <text x="356" y="40" fontSize="12" fontWeight="bold" fill="#111827">New York City, NY</text>
+                <text x="356" y="56" fontSize="10" fill="#2563eb">Interactive Climate Map</text>
+                <text x="356" y="72" fontSize="9" fill="#16a34a">30 active data points</text>
+                <text x="356" y="88" fontSize="8" fontWeight="500" fill="#6b7280">Map Features:</text>
+                <text x="356" y="100" fontSize="7" fill="#6b7280">• Blue areas = water • Green = parks • Gray = urban</text>
+                
+                {/* Map Controls */}
+                <rect x="1140" y="20" width="40" height="80" rx="6" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                <rect x="1148" y="28" width="24" height="24" rx="2" fill="#2563eb" />
+                <text x="1160" y="42" fontSize="14" fontWeight="bold" fill="white" textAnchor="middle">+</text>
+                <rect x="1148" y="56" width="24" height="24" rx="2" fill="#2563eb" />
+                <text x="1160" y="71" fontSize="16" fontWeight="bold" fill="white" textAnchor="middle">−</text>
+                
+                {/* Legend */}
+                <rect x="340" y="480" width="280" height="100" rx="8" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+                <text x="356" y="500" fontSize="12" fontWeight="bold" fill="#111827">Temperature Monitoring</text>
+                <text x="356" y="516" fontSize="9" fill="#6b7280">Colored dots show temperature readings across the city</text>
+                <rect x="356" y="526" width="200" height="8" rx="4" fill="url(#tempGradient)" />
+                <text x="356" y="546" fontSize="8" fill="#6b7280">5°C (Cold)</text>
+                <text x="536" y="546" fontSize="8" fill="#6b7280">35°C (Hot)</text>
+                <text x="356" y="560" fontSize="8" fill="#6b7280" fontStyle="italic">Click any dot to see detailed temperature data</text>
+                
+                {/* City Label */}
+                <rect x="680" y="290" width="120" height="20" rx="10" fill="white" opacity="0.9" stroke="#e5e7eb" strokeWidth="1" />
+                <text x="740" y="302" fontSize="10" fontWeight="500" fill="#374151" textAnchor="middle">New York</text>
+                
+                {/* Interactive Guide */}
+                <rect x="1020" y="480" width="160" height="100" rx="8" fill="rgba(0,0,0,0.8)" />
+                <text x="1036" y="500" fontSize="10" fontWeight="500" fill="white">Try the Demo</text>
+                <text x="1036" y="516" fontSize="8" fill="rgba(255,255,255,0.9)">• Click colored data points</text>
+                <text x="1036" y="530" fontSize="8" fill="rgba(255,255,255,0.9)">• Switch layers in sidebar</text>
+                <text x="1036" y="544" fontSize="8" fill="rgba(255,255,255,0.9)">• Search different cities</text>
+                <text x="1036" y="558" fontSize="8" fill="rgba(255,255,255,0.9)">• View live analytics</text>
+              </svg>
               <p className="text-sm text-gray-500 text-center mt-4">
-                Complete interface showing map visualization, layer controls, search, analytics, and export features
+                Main interface showing map-first layout with geographic features, data layer controls, and search functionality
               </p>
             </div>
 
